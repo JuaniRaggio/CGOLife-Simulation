@@ -1,4 +1,4 @@
-#include <../include/simulation.hpp>
+#include "../include/simulation.hpp"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
@@ -6,6 +6,7 @@
 Grid::Grid(): grid() {};
 
 bool Grid::set_cell_value(int value, int i, int j) {
+    // If out of range, return false and do nothing
     if (i < 0 || i >= ROWS || j < 0 || j >= COLUMNS) return false;
     grid[i][j] = value;
     return true;
@@ -23,7 +24,9 @@ void Simulation::run_simulation(void) {
     SDL_Event event;
     while(simulation_running) {
         while(SDL_PollEvent(&event)) {
-            simulation_step(current_state);
+            switch (event.key.keysym.sym) {
+                simulation_running = simulation_step(current_state);
+            }
         }
         show_environment(current_state);
         SDL_UpdateWindowSurface(window);
@@ -31,7 +34,11 @@ void Simulation::run_simulation(void) {
     return;
 }
 
-void Simulation::simulation_step(Environment env) {
+bool Simulation::simulation_step(Environment env) {
+    return true;
+}
+
+void Simulation::show_environment(Environment env) {
     return;
 }
 

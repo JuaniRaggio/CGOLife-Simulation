@@ -36,7 +36,7 @@ class Simulation {
     public:
         Simulation(SDL_Window * window, SDL_Surface * window_surface);
         void run_simulation(void);
-        void simulation_step(Environment env);
+        bool simulation_step(Environment env);
         void show_environment(Environment env);
 };
 

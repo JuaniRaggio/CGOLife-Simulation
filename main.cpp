@@ -2,9 +2,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_video.h>
-#include <include/simulation.hpp>
-#include <include/error_management.hpp>
-#include <include/formats.hpp>
+#include "include/simulation.hpp"
+#include "include/error_management.hpp"
+#include "include/formats.hpp"
 
 int main(void) {
     CHECK_ERRORS(SDL_Init(SDL_INIT_VIDEO) != 0, SDL_GetError());

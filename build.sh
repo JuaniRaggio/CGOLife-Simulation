@@ -1,4 +1,4 @@
 #!/bin/bash
 
-clang++ -o a.out $1 -lSDL2
+clang++ -o a.out $1 src/* -lSDL2
 
