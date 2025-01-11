@@ -1,18 +1,28 @@
-#include <exception>
+#include <include/simulation.hpp>
 #include <iostream>
 #include <SDL2/SDL.h>
-
-#define CHECK_ERRORS(expresion)\
-        do {\
-            if ((expresion)) {\
-                std::cout << "Assertion failed at line " << __LINE__ << " at file " << __FILE__ << std::endl;\
-                std::terminate();\
-            }\
-        } while(0)
+#include <SDL2/SDL_error.h>
+#include <SDL2/SDL_video.h>
+#include "include/error_management.hpp"
+#include "include/formats.hpp"
 
 int main(void) {
-    std::cout << "Hello world!" << std::endl;
-    CHECK_ERRORS(true);
-    std::cout << "Hey!" << std::endl;
+    CHECK_ERRORS(SDL_Init(SDL_INIT_VIDEO) != 0, SDL_GetError());
+    
+    SDL_Window * window = SDL_CreateWindow("Welcome to Conway's The Game Of Life",
+            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+            INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
+    CHECK_ERRORS(window == NULL, SDL_GetError());
+
+    SDL_Surface * window_surface = SDL_GetWindowSurface(window);
+    CHECK_ERRORS(window_surface == NULL, SDL_GetError());
+
+    Simulation(window, window_surface).run_simulation();
+
+    SDL_DestroyWindowSurface(window);
+    SDL_DestroyWindow(window);
+
+    std::cout << "Everithing ok!" << std::endl;
+    return 0;
 }
 
