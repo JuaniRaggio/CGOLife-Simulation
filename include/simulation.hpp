@@ -2,6 +2,7 @@
 
 #include "formats.hpp"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
 #include <array>
@@ -36,7 +37,8 @@ class Simulation {
     public:
         Simulation(SDL_Window * window, SDL_Surface * window_surface);
         void run_simulation(void);
-        bool simulation_step(Environment env);
+        bool event_reaction(SDL_Event event, SDL_Window * window, SDL_Surface * window_surface);
+        void simulation_step(Environment env);
         void show_environment(Environment env);
 };
 

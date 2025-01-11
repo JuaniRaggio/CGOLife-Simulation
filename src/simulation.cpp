@@ -24,9 +24,7 @@ void Simulation::run_simulation(void) {
     SDL_Event event;
     while(simulation_running) {
         while(SDL_PollEvent(&event)) {
-            switch (event.key.keysym.sym) {
-                simulation_running = simulation_step(current_state);
-            }
+            simulation_running = event_reaction(event, window, window_surface);
         }
         show_environment(current_state);
         SDL_UpdateWindowSurface(window);
@@ -34,8 +32,12 @@ void Simulation::run_simulation(void) {
     return;
 }
 
-bool Simulation::simulation_step(Environment env) {
+bool Simulation::event_reaction(SDL_Event event, SDL_Window * window, SDL_Surface * window_surface) {
     return true;
+}
+
+void Simulation::simulation_step(Environment env) {
+    return;
 }
 
 void Simulation::show_environment(Environment env) {
