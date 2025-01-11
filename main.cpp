@@ -1,10 +1,10 @@
-#include <include/simulation.hpp>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_video.h>
-#include "include/error_management.hpp"
-#include "include/formats.hpp"
+#include <include/simulation.hpp>
+#include <include/error_management.hpp>
+#include <include/formats.hpp>
 
 int main(void) {
     CHECK_ERRORS(SDL_Init(SDL_INIT_VIDEO) != 0, SDL_GetError());
@@ -22,7 +22,7 @@ int main(void) {
     SDL_DestroyWindowSurface(window);
     SDL_DestroyWindow(window);
 
-    std::cout << "Everithing ok!" << std::endl;
+    std::cout << "Game over!" << std::endl;
     return 0;
 }
 

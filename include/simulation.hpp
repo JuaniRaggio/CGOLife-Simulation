@@ -6,19 +6,27 @@
 #include <SDL2/SDL_video.h>
 #include <array>
 
+#define INIT 0
 #define DEAD_CELL 0
 #define LIVE_CELL 1
+
+class Grid {
+    private:
+        // zero-value initialization
+        std::array<std::array<int, COLUMNS>, ROWS> grid = {};
+    public:
+        Grid();
+        bool set_cell_value(int value, int i, int j);
+};
 
 // Using int because SDL uses int
 class Environment {
     private:
-        // Environment will be initialize with zero-value initialization
-        std::array<std::array<int, COLUMNS>, ROWS> environment {};
-        size_t generations {};
-        size_t live_cells {};
+        Grid grid;
+        size_t generations;
+        size_t live_cells;
     public:
         Environment();
-        void set_cell_value(int value, int i, int j);
 };
 
 class Simulation {
@@ -28,6 +36,7 @@ class Simulation {
     public:
         Simulation(SDL_Window * window, SDL_Surface * window_surface);
         void run_simulation(void);
-        void simulation_step(void);
+        void simulation_step(Environment env);
+        void show_environment(Environment env);
 };
 
