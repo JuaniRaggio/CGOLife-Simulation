@@ -82,7 +82,7 @@ void Simulation::show_environment(void) {
 
 void Simulation::show_lines(Uint32 color, int x_init_point, int y_init_point, int limit,
         int line_length, int line_thickness) {
-    for (int position = 0; position < limit; ++position) {
+    for (int position = 1; position < limit; ++position) {
         SDL_Rect line = (SDL_Rect){
             .x = position*x_init_point,
             .y = position*y_init_point,
@@ -94,7 +94,7 @@ void Simulation::show_lines(Uint32 color, int x_init_point, int y_init_point, in
 }
 
 void Simulation::show_grid(void) {
-    show_lines(LINE_COLOR, 0, CELL_SIZE, ROWS, INIT_SCREEN_HEIGHT, LINE_WIDTH);
-    show_lines(LINE_COLOR, CELL_SIZE, 0, COLUMNS, LINE_WIDTH, INIT_SCREEN_WIDTH);
+    show_lines(LINE_COLOR, 0, CELL_SIZE, ROWS, LINE_WIDTH, INIT_SCREEN_WIDTH);
+    show_lines(LINE_COLOR, CELL_SIZE, 0, COLUMNS, INIT_SCREEN_HEIGHT, LINE_WIDTH);
 }
 
