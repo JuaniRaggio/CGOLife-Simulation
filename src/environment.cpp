@@ -23,12 +23,15 @@ int Grid::get_cell(int i, int j) {
     return grid[i][j];
 }
 
-void Grid::assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values) {
+int Grid::assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values) {
+    int live_cells = 0;
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLUMNS; ++j) {
             grid[i][j] = new_values[i][j];
+            live_cells += grid[i][j];
         }
     }
+    return live_cells;
 }
 
 void Grid::grid_randomizer(void) {
@@ -88,7 +91,8 @@ void Environment::apply_rules(void) {
             aux_grid[i][j] = value_at_next_step(grid.get_cell(i, j), i, j);
         }
     }
-    grid.assign_new_grid(aux_grid);
+    live_cells = grid.assign_new_grid(aux_grid);
+    generations++;
 }
 
 void Environment::generate_random_environment(void) {

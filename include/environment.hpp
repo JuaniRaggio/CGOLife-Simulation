@@ -23,7 +23,7 @@ class Grid {
         bool valid_id(int i, int j);
     public:
         Grid();
-        void assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values);
+        int assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values);
         bool set_cell_value(int value, int i, int j);
         int get_cell(int i, int j);
         void grid_randomizer(void);
