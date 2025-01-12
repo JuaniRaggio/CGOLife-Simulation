@@ -23,7 +23,7 @@ int Grid::get_cell(int i, int j) {
     return grid[i][j];
 }
 
-void Grid::assign_new_grid(std::array<const std::array<int, COLUMNS>, ROWS> new_values) {
+void Grid::assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values) {
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLUMNS; ++j) {
             grid[i][j] = new_values[i][j];
@@ -61,8 +61,34 @@ void Environment::swap_cell_value(Sint32 i, Sint32 j) {
     grid.set_cell_value(new_value, i, j);
 }
 
+int Environment::value_at_next_step(int current_value, int i, int j) {
+    int live_neighbours = 0;
+    for (int sub_i = i - 1; sub_i <= i + 1; ++sub_i) {
+        for (int sub_j = j - 1; sub_j <= j + 1; ++sub_j) {
+            if ((sub_i != i || sub_j != j) && sub_i > 0 && sub_j > 0 && sub_i < ROWS && sub_j < COLUMNS)
+                live_neighbours += grid.get_cell(sub_i, sub_j) == LIVE_CELL;
+        }
+    }
+    if (current_value == DEAD_CELL) {
+        return live_neighbours == 3 ? LIVE_CELL:DEAD_CELL;
+    }
+    return (live_neighbours < 2 || live_neighbours > 3) ?
+        DEAD_CELL:((live_neighbours == 2 || live_neighbours == 3) ? LIVE_CELL:DEAD_CELL);
+    /* 1. Any live cell with fewer than two live neighbours dies, as if by underpopulation. */
+    /* 2. Any live cell with two or three live neighbours lives on to the next generation. */
+    /* 3. Any live cell with more than three live neighbours dies, as if by overpopulation. */
+    /* 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. */
+}
+
 void Environment::apply_rules(void) {
     // Rules
+    std::array<std::array<int, COLUMNS>, ROWS> aux_grid = {};
+    for (int i = 0; i < ROWS; ++i) {
+        for (int j = 0; j < COLUMNS; ++j) {
+            aux_grid[i][j] = value_at_next_step(grid.get_cell(i, j), i, j);
+        }
+    }
+    grid.assign_new_grid(aux_grid);
 }
 
 void Environment::generate_random_environment(void) {

@@ -4,6 +4,8 @@
 #include <array>
 #include <SDL2/SDL.h>
 
+#define DEAD_CELL 0
+#define LIVE_CELL 1
 #define INIT 0
 #define RUNNING true
 #define COLOR_DEAD_CELL 0x00000000
@@ -21,7 +23,7 @@ class Grid {
         bool valid_id(int i, int j);
     public:
         Grid();
-        void assign_new_grid(std::array<const std::array<int, COLUMNS>, ROWS> new_values);
+        void assign_new_grid(std::array<std::array<int, COLUMNS>, ROWS> new_values);
         bool set_cell_value(int value, int i, int j);
         int get_cell(int i, int j);
         void grid_randomizer(void);
@@ -35,6 +37,7 @@ class Environment {
         bool running_state = {!RUNNING};
         size_t generations;
         size_t live_cells;
+        int value_at_next_step(int current_value, int i, int j);
     public:
         Environment();
         int get_cell_atidx(int i, int j);

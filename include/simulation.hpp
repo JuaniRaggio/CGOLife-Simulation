@@ -3,8 +3,6 @@
 #include "environment.hpp"
 #include <SDL2/SDL.h>
 
-#define DEAD_CELL 0
-#define LIVE_CELL 1
 
 
 class Simulation {

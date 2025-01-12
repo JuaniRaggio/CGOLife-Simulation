@@ -1,6 +1,7 @@
 #include "../include/simulation.hpp"
 #include "../include/formats.hpp"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 Simulation::Simulation(SDL_Window& window, SDL_Surface& window_surface)
     : window(window), window_surface(window_surface) {
@@ -8,6 +9,7 @@ Simulation::Simulation(SDL_Window& window, SDL_Surface& window_surface)
 };
 
 void Simulation::run_simulation(void) {
+    const int delay_ms = 100;
     bool simulation_running = true;
     SDL_Event event;
     while (simulation_running) {
@@ -17,6 +19,7 @@ void Simulation::run_simulation(void) {
         simulation_step();
         show_environment();
         SDL_UpdateWindowSurface(&window);
+        SDL_Delay(delay_ms);
     }
     return;
 }
