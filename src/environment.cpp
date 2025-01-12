@@ -45,6 +45,10 @@ void Grid::grid_randomizer(void) {
 // Remember grid is zero-value initialized
 Environment::Environment() : grid(), live_cells(INIT), generations(INIT) {};
 
+int Environment::get_cell_atidx(int i, int j) {
+    return grid.get_cell(i, j);
+}
+
 bool Environment::get_state(void) {
     return running_state;
 }

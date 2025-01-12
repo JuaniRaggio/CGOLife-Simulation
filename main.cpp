@@ -11,7 +11,7 @@ int main(void) {
     
     SDL_Window * window = SDL_CreateWindow("Welcome to Conway's The Game Of Life",
             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
+            INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
     CHECK_ERRORS(window == NULL, SDL_GetError());
 
     SDL_Surface * window_surface = SDL_GetWindowSurface(window);

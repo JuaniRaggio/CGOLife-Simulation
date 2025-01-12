@@ -6,6 +6,13 @@
 
 #define INIT 0
 #define RUNNING true
+#define COLOR_DEAD_CELL 0x00000000
+#define COLOR_LIVE_CELL 0xffffffff
+
+typedef enum {
+    dead_color = COLOR_DEAD_CELL,
+    live_color = COLOR_LIVE_CELL
+} cell_color;
 
 class Grid {
     private:
@@ -30,6 +37,7 @@ class Environment {
         size_t live_cells;
     public:
         Environment();
+        int get_cell_atidx(int i, int j);
         bool get_state(void);
         void swap_state(void);
         void swap_cell_value(Sint32 i, Sint32 j);
