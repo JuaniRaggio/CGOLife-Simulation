@@ -21,7 +21,7 @@ int main(void) {
 
     SDL_DestroyWindowSurface(window);
     SDL_DestroyWindow(window);
-
+    SDL_Quit();
     std::cout << "Game over!" << std::endl;
     return 0;
 }
