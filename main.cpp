@@ -17,7 +17,7 @@ int main(void) {
     SDL_Surface * window_surface = SDL_GetWindowSurface(window);
     CHECK_ERRORS(window_surface == NULL, SDL_GetError());
 
-    Simulation(window, window_surface).run_simulation();
+    Simulation(*window, *window_surface).run_simulation();
 
     SDL_DestroyWindowSurface(window);
     SDL_DestroyWindow(window);

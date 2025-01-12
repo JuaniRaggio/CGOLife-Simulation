@@ -2,7 +2,6 @@
 
 #include "formats.hpp"
 #include <array>
-#include <random>
 #include <SDL2/SDL.h>
 
 #define INIT 0
@@ -21,6 +20,7 @@ class Grid {
         void grid_randomizer(void);
 };
 
+// Adapter
 // Using int because SDL uses int
 class Environment {
     private:
