@@ -36,7 +36,7 @@ void Grid::grid_randomizer(void) {
     std::mt19937 gen(rd());
     for (auto& row: grid) {
         for (int& element: row) {
-            std::bernoulli_distribution bernoulli_dist(0.5);
+            std::bernoulli_distribution bernoulli_dist(0.2);
             element = bernoulli_dist(gen);
         }
     }
