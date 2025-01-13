@@ -1,5 +1,13 @@
 # CGOLife-Simulation
 ---
+
+### Supported keybinds
+- SPACE_BAR: Start game with current initial state / Stop game
+- Click: Add new live cell / Stop game if running
+- r: New randomized state
+- x: Sets all cells to Dead mode
+- c: Cool initial state with glinders and well-known patterns
+
 ![Demo](assets/output.gif)
 
 ### Rules
@@ -9,3 +17,5 @@ The universe of the Game of Life is an infinite, two-dimensional orthogonal grid
 2. Any live cell with two or three live neighbours lives on to the next generation.
 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+

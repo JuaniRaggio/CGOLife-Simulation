@@ -94,6 +94,10 @@ void Simulation::keyboard_reaction(SDL_KeyboardEvent& keyboard_event){
             createPatternMatrix(mat);
             env.set_environment_to(mat);
             break;
+        case SDLK_x:
+            // Restore all values to dead
+            env.set_environment_to({});
+            break;
         // Add key bindings for more features
     }
 }
