@@ -46,5 +46,6 @@ class Environment {
         void swap_cell_value(Sint32 i, Sint32 j);
         void apply_rules(void);
         void generate_random_environment(void);
+        void set_environment_to(std::array<std::array<int, COLUMNS>, ROWS> value);
 };
 
