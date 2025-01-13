@@ -19,7 +19,7 @@ int main(void) {
 
     Simulation(*window, *window_surface).run_simulation();
 
-    SDL_DestroyWindowSurface(window);
+    SDL_DestroYwindowsurface(window);
     SDL_DestroyWindow(window);
     SDL_Quit();
     std::cout << "Game over!" << std::endl;
