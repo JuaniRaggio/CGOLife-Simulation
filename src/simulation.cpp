@@ -18,7 +18,6 @@ void Simulation::run_simulation(void) {
         simulation_step();
         show_environment();
         SDL_UpdateWindowSurface(&window);
-        SDL_Delay(100);
     }
     return;
 }

@@ -64,12 +64,25 @@ void Environment::swap_cell_value(Sint32 i, Sint32 j) {
     grid.set_cell_value(new_value, i, j);
 }
 
+int Environment::get_normalization(int idx, int upper_limit) {
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // I know this is wrong but mod operand wasn't working correcly still can't figure it out
+    if (idx < 0) {
+        return ROWS - 1;
+    } else if (idx == upper_limit) {
+        return 0;
+    } else {
+        return idx;
+    }
+}
+
 int Environment::value_at_next_step(int current_value, int i, int j) {
-    int live_neighbours = 0;
+    int live_neighbours = 0, norm_i, norm_j;
     for (int sub_i = i - 1; sub_i <= i + 1; ++sub_i) {
         for (int sub_j = j - 1; sub_j <= j + 1; ++sub_j) {
             if (sub_i == i && sub_j == j) continue;
-            live_neighbours += grid.get_cell(sub_i, sub_j) == LIVE_CELL;
+            live_neighbours +=
+                grid.get_cell(get_normalization(sub_i, ROWS), get_normalization(sub_j, COLUMNS)) == LIVE_CELL;
         }
     }
     if (current_value == LIVE_CELL) {

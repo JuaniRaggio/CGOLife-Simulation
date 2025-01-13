@@ -38,6 +38,7 @@ class Environment {
         size_t generations;
         size_t live_cells;
         int value_at_next_step(int current_value, int i, int j);
+        int get_normalization(int idx, int upper_limit);
     public:
         Environment();
         int get_cell_atidx(int i, int j);
