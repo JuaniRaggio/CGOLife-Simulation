@@ -1,6 +1,6 @@
 # CGOLife-Simulation
 ---
-[showcase](assets/output.gif)
+![showcase](assets/output.gif)
 ### Supported keybinds
 - SPACE_BAR: Start game with current initial state / Stop game
 - Click: Add new live cell / Stop game if running
