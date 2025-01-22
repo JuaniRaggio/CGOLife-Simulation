@@ -8,7 +8,7 @@
 
 int main(void) {
     CHECK_ERRORS(SDL_Init(SDL_INIT_VIDEO) != 0, SDL_GetError());
-    
+
     SDL_Window * window = SDL_CreateWindow("Welcome to Conway's Game Of Life",
             SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             INIT_SCREEN_WIDTH, INIT_SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
@@ -19,7 +19,7 @@ int main(void) {
 
     Simulation(*window, *window_surface).run_simulation();
 
-    SDL_DestroYwindowsurface(window);
+    SDL_DestroyWindowSurface(window);
     SDL_DestroyWindow(window);
     SDL_Quit();
     std::cout << "Game over!" << std::endl;
